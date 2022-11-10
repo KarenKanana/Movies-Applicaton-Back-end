@@ -1,20 +1,29 @@
-require "sinatra"
-
+require 'pry'
 class ApplicationController < Sinatra::Base
+  set :default_content_type, 'application/json'
+  
+  # Add your routes here
+  get "/continue_to_watch" do
+    continue_to_watch.all.to_json
+  end
+  get "/continue_to_watch/:id" do
+    movie = continue_to_watch.find(params[:id])
+    movie.to_json
+  end
 
-    set :default_content_type, "application/json"
+  get "/popular" do 
+    Action.all.to_json
+  end
+  get "/popular/:id" do
+    movie = popular.find(params[:id])
+    movie.to_json
+  end
 
-    get '/' do
-        "Server is up!"
-    end
-
-    get '/movies' do 
-        movies = Movie.all
-        movies.to_json
-    end
-
-    get '/movies/:id' do
-        movie = Movie.find(params[:id])
-        movie.to_json
-    end
+  get "/trending" do 
+    trending.all.to_json
+  end
+  get "/action/:id" do
+    movie = trending.find(params[:id])
+    movie.to_json
+  end
 end
