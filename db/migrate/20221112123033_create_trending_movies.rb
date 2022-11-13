@@ -6,7 +6,7 @@ class CreateTrendingMovies < ActiveRecord::Migration[6.1]
       t.string :overview
       t.float :rating
       t.string :release_date
-
+      
     end
   end
 end

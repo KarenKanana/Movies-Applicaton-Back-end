@@ -1,6 +1,10 @@
 require 'pry'
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
+
+  get '/' do
+    "Hello World"
+  end
   
   # Add your routes here
   get "/continue_to_watch" do
@@ -12,7 +16,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/popular" do 
-    Action.all.to_json
+    popular.all.to_json
   end
   get "/popular/:id" do
     movie = popular.find(params[:id])
