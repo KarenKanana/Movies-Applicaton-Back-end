@@ -2,6 +2,10 @@ require 'pry'
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
+  configure do 
+    set :views, 'app/views'
+  end
+
   get '/' do
     "Starting your server...."
   end
@@ -26,5 +30,9 @@ class ApplicationController < Sinatra::Base
   get "/trending" do 
     trending.all.to_json
   end
-  
+
+  get "/movies" do 
+    movies.all.to_json
+  end
+
 end
