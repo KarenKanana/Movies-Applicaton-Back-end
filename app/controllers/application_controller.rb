@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
   get '/' do
-    "Hello World"
+    "Starting your server...."
   end
   
   # Add your routes here
@@ -26,8 +26,5 @@ class ApplicationController < Sinatra::Base
   get "/trending" do 
     trending.all.to_json
   end
-  get "/action/:id" do
-    movie = trending.find(params[:id])
-    movie.to_json
-  end
+  
 end
